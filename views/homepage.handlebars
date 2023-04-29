@@ -1,4 +1,6 @@
-
-<div>
-  <p>Inside homepage</p>
+<div class="text-center">
+  {{#each posts as |post| }}
+  <h2>{{post.name}}</h2>
+  <p>{{post.description}}</p>
+  {{/each}}
 </div>
