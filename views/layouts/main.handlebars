@@ -1,86 +1,32 @@
-<!-- Homepage -->
-{{!-- existing blog posts --}}
-{{!-- {{#if blogPosts}}
-  {{#each blogPosts}}
-    <div class="blog-post">
-      <h2>{{title}}</h2>
-      <p>{{contents}}</p>
-      <p>By {{creatorUsername}} on {{dateCreated}}</p>
-      {{!-- comments --}}
-      {{#if comments}}
-        <h3>Comments:</h3>
-        {{#each comments}}
-          <div class="comment">
-            <p>{{text}}</p>
-            <p>By {{creatorUsername}} on {{dateCreated}}</p>
-          </div>
-        {{/each}}
-      {{/if}}
-    </div>
-  {{/each}}
-{{else}}
-  <p>No blog posts found.</p>
-{{/if}} --}}
+<!DOCTYPE html>
+<html lang="en">
 
-{{!-- navigation links --}}
-<a href="/">Home</a>
-<a href="/dashboard">Dashboard</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+</head>
 
-{{!-- login/signup --}}
-{{#if loggedIn}}
-  <a href="/logout">Logout</a>
-{{else}}
-  <a href="/login">Login</a>
-  <a href="/signup">Signup</a>
-{{/if}}
+<body>
 
-<!-- Login/Signup -->
-{{#if signup}}
-  <form action="/signup" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
-    <input type="submit" value="Signup">
-  </form>
-{{else}}
-  <form action="/login" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
-    <input type="submit" value="Login">
-  </form>
-{{/if}}
+  {{!-- navigation links --}}
+  <nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
 
-<!-- Dashboard -->
-{{#if loggedIn}}
-  {{!-- existing blog posts --}}
-  {{#if blogPosts}}
-    {{#each blogPosts}}
-      <div class="blog-post">
-        <h2>{{title}}</h2>
-        <p>{{contents}}</p>
-        <p>By {{creatorUsername}} on {{dateCreated}}</p>
-        {{!-- edit/delete post --}}
-        <a href="/edit/{{id}}">Edit</a>
-        <a href="/delete/{{id}}">Delete</a>
-      </div>
-    {{/each}}
-  {{else}}
-    <p>No blog posts found.</p>
-  {{/if}}
-  {{!-- add new blog post --}}
-  <a href="/new">New Post</a>
-{{else}}
-  <p>You must be logged in to view this page.</p>
-{{/if}}
+    {{!-- login/signup --}}
+    {{#if loggedIn}}
+    <a href="/logout">Logout</a>
+    {{else}}
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+    {{/if}}
+  </nav>
 
-<!-- Add New Post -->
-<form action="/new" method="POST">
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title">
-  <label for="contents">Contents:</label>
-  <textarea id="contents" name="contents"></textarea>
-  <input type="submit" value="Create Post">
-</form>
+  <main>
+    {{{ body }}}
+  </main>
+
+</body>
+
+</html>
